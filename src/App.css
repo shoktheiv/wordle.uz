@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.App {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #121213;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+.title{
+  font-size: 5vh;
+}
+
+.board {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0.5vw;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5vw;
+}
+
+.tile {
+  width: 6vh;
+  height: 6vh;
+  border: 2px solid #3a3a3c;
+  display: flex;
+  justify-content: center;
+  border-radius: 10%;
+  align-items: center;
+  font-size: 3vh;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: transparent;
+  color: white;
+  transition: transform 0.3s ease, background 0.3s ease;
+  transform-origin: center;
+  animation: appear 0.1s ease;
+}
+
+.tile.flip {
+  transform: rotateX(180deg);
+}
+
+.tile.pop {
+  animation: pop 0.2s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.green {
+  background: #538d4e;
+  border-color: #538d4e;
+}
+
+.yellow {
+  background: #b59f3b;
+  border-color: #b59f3b;
+}
+
+.gray {
+  background: #3a3a3c;
+  border-color: #3a3a3c;
+}
+
+.keyboard {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.key-wide {
+  flex: 1.5;
+}
+
+.keyboard-row button {
+  color: white;
+  border: none;
+  background-color: transparent;
+  height: 65px;
+  width: 65px;
+  font-size: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.keyboard-row button:hover {
+  background: #2c2c2c;
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .keyboard-row button {
+    height: 50px;
+    width: 35px;
+    font-size: 2vh;
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tile span {
+  display: inline-block;
+  animation: appear 0.1s ease;
+}
+
+.keyboard-row button.green {
+  background: #538d4e;
+}
+
+.keyboard-row button.yellow {
+  background: #b59f3b;
+}
+
+.keyboard-row button.gray {
+  background: #3a3a3c;
+}
+
+.notification {
+  position: absolute;
+  top: 40vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #00000086;
+  color: #ffffff;
+  padding: 20px 40px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeInOut 2s ease-in-out;
+  z-index: 1000;
+}
+
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Light Mode Styling */
+body.light-mode {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.light-mode .App {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+body.light-mode .tile {
+  background-color: #b4b4b4;
+  border: 2px solid #b4b4b4;
+  color: white;
+}
+
+body.light-mode .keyboard-row button {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+body.light-mode .tile.green {
+  background-color: #85c47c;
+  border-color: #85c47c;
+}
+
+body.light-mode .tile.yellow {
+  background-color: #f4de71;
+  border-color: #f4de71;
+}
+
+body.light-mode .keyboard-row button:hover {
+  background-color: #d5d5d5;
+}
+
+body.light-mode .keyboard-row button.green {
+  background-color: #85c47c;
+}
+
+body.light-mode .keyboard-row button.yellow {
+  background-color: #f4de71;
+}
+
+body.light-mode .keyboard-row button.gray {
+  background-color: #c0c0c0;
+}
+
+body.light-mode .notification {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+}
+
+
+.help-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.help-button:hover {
+  transform: scale(1.1);
+}
+
+.tutorial-panel {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tutorial-content h2 {
+  margin-top: 0;
+}
+
+.tutorial-content ul {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.tutorial-content li {
+  margin-bottom: 8px;
+}
+
+.tutorial-content .green {
+  color: #538d4e;
+  font-weight: bold;
+}
+
+.tutorial-content .yellow {
+  color: #b59f3b;
+  font-weight: bold;
+}
+
+.tutorial-content .gray {
+  color: #888;
+  font-weight: bold;
+}
+
+.tutorial-content button {
+  margin-top: 12px;
+  padding: 6px 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tutorial-content button:hover {
+  background-color: #444;
+}
+
+/* Light Mode */
+body.light-mode .help-button {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+body.light-mode .tutorial-panel {
+  background: #ffffff;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+body.light-mode .tutorial-content .green {
+  color: #85c47c;
+}
+
+body.light-mode .tutorial-content .yellow {
+  color: #f4de71;
+}
+
+body.light-mode .tutorial-content .gray {
+  color: #777;
+}
+
+body.light-mode .tutorial-content button {
+  background-color: #ddd;
+  color: #000;
+}
+
+body.light-mode .tutorial-content button:hover {
+  background-color: #ccc;
+}
+body {
+  overflow: hidden;
+}
+
+body.light-mode {
+  overflow: hidden;
+}
